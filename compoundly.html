@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#104c3b">
+<meta name="description" content="Calculate compound interest with monthly contributions and explore your projected balance year by year.">
+<title>Compound interest calculator · Compoundly</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='11' fill='%230e664c'/%3E%3Cpath d='m7 25 7-8v11H7zm10-6 7-8v17h-7zm10-6 6-7v22h-6z' fill='%23e4ffd1'/%3E%3C/svg%3E">
+<style>
+:root{color-scheme:light;--ink:#172a23;--muted:#53685e;--green:#126548;--stroke:#d9e2dc;--page:#f5f7f4;--focus:#22795f;font-family:Inter,"Helvetica Neue",Arial,sans-serif;color:var(--ink);background:var(--page);font-synthesis:none}
+*{box-sizing:border-box}body{margin:0;min-width:300px}button,input,select{font:inherit;color:inherit}button,select,input[type=range]{cursor:pointer}button{border:0;background:none}button:focus-visible,select:focus-visible,input:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:3px solid #429d79;outline-offset:3px}h1,h2,h3,p{margin:0}button,select{touch-action:manipulation}[hidden]{display:none!important}.svg-bank{position:absolute;width:0;height:0;overflow:hidden}.icon{width:18px;height:18px;display:block;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}.frame{max-width:1312px;width:calc(100% - clamp(40px,8vw,124px));margin:auto}.site-header{background:#fff;border-bottom:1px solid var(--stroke)}.nav{height:72px;display:flex;align-items:center;justify-content:space-between}.brand{display:inline-flex;align-items:center;gap:10px;font-weight:750;letter-spacing:-1.25px;font-size:25px;color:#194635}.brand svg{width:34px;height:34px}.nav-actions,.guide,.currency,.labelrow,.card-title,.summary-head,.legend,.switcher,.foot-note{display:flex;align-items:center}.nav-actions{gap:23px}.guide{gap:8px;font-size:.875rem;font-weight:600;padding:8px 0;color:#485a51}.guide:hover,.reset:hover,.download:hover{color:#0e7655}.currency{position:relative;border:1px solid var(--stroke);border-radius:8px;gap:7px;padding:0 10px;height:36px;background:#fff}.currency .icon{width:15px;height:15px}.currency select{padding:0 17px 0 0;height:100%;border:0;background:transparent;appearance:none;font-size:.8125rem;font-weight:650}.currency .chevron{position:absolute;right:9px;width:12px;pointer-events:none}.hero{isolation:isolate;position:relative;overflow:hidden;display:flex;align-items:center;min-height:164px;margin:28px 0 24px;border-radius:16px;background:linear-gradient(105deg,#0e3f32 6%,#104c3b 65%,#11533f);color:white}.hero-content{z-index:1;padding:28px 34px;width:calc(100% - 280px)}h1{font-size:clamp(2rem,3.3vw,3rem);font-weight:600;line-height:1.13;letter-spacing:-.052em}.hero p{color:#d8e9df;font-size:1rem;line-height:1.6;max-width:610px;margin-top:12px}.hero-art{position:absolute;z-index:-1;inset:0 0 0 auto;height:100%;width:40%;overflow:visible;user-select:none;pointer-events:none}.workspace{display:grid;grid-template-columns:minmax(292px,.88fr) minmax(0,1.92fr);gap:22px;align-items:stretch}.card{background:white;border:1px solid var(--stroke);border-radius:14px;box-shadow:0 2px 4px #173d2710}.inputs{padding:25px 25px 24px}.card-title{justify-content:space-between;gap:5px;margin-bottom:24px}.title-group{display:flex;align-items:center;gap:10px}.title-icon{background:#eaf3ec;color:#24614a;width:32px;height:32px;border-radius:8px;display:grid;place-items:center}.card-title h2,.chart-head h2{font-size:1.2rem;font-weight:650;letter-spacing:-.035em}.reset{display:flex;gap:5px;align-items:center;padding:6px 0 6px 6px;font-size:.8125rem;color:var(--muted)}.reset svg{width:14px;height:14px}.fields{display:grid;gap:20px}.field label,.labelrow label{display:block;font-size:.875rem;font-weight:600;color:#354c40;line-height:1.35}.input-wrap,.frequency{height:44px;border:1px solid #cdd8cf;border-radius:7px;background:#fff;margin-top:8px}.input-wrap{display:flex;align-items:center;gap:10px;padding:0 13px}.input-wrap:focus-within,.frequency:focus-within{border-color:var(--green);box-shadow:0 0 0 2px #176a4924}.input-wrap input{min-width:0;width:100%;height:100%;border:0;outline:0!important;background:transparent;font-size:1rem;font-variant-numeric:tabular-nums}.unit{color:#64776c;line-height:1;font-size:.9375rem}.labelrow{justify-content:space-between;gap:8px}.field .inline-input{display:flex;align-items:center;justify-content:center;gap:4px;background:#f2f7f2;border:1px solid #d9e4db;border-radius:6px;padding:0 8px;height:32px;color:#25563c}.inline-input input{border:0;background:transparent;width:34px;text-align:right;outline:0;font-weight:650;font-size:.9375rem;padding:0;font-variant-numeric:tabular-nums}.inline-input:focus-within{outline:2px solid #429d79}.inline-input .unit{font-size:.8125rem;color:#37634a}.range{--pct:25%;appearance:none;display:block;width:100%;height:6px;margin:17px 0 11px;border-radius:9px;background:linear-gradient(to right,#227655 0 var(--pct),#e4eae4 var(--pct) 100%)}.range::-webkit-slider-thumb{appearance:none;border:3px solid #fff;width:17px;height:17px;border-radius:50%;background:#196548;box-shadow:0 0 0 1.5px #196548,0 1px 3px #24473124}.range::-moz-range-thumb{border:3px solid white;width:11px;height:11px;border-radius:50%;background:#196548;box-shadow:0 0 0 1.5px #196548}.range-labels{display:flex;justify-content:space-between;color:#65756b;font-size:.75rem}.frequency{display:flex;align-items:center;position:relative}.frequency select{appearance:none;width:100%;height:100%;border:0;background:transparent;border-radius:7px;padding:0 38px 0 13px;font-size:.9375rem}.frequency svg{position:absolute;right:13px;width:15px;pointer-events:none}.validation{font-size:.8125rem;line-height:1.5;color:#9a3a22;margin-top:10px}.field:has([aria-invalid=true]) .input-wrap,.field:has([aria-invalid=true]) .inline-input{border-color:#ad553d}.results{min-width:0;overflow:hidden;display:flex;flex-direction:column}.balance-block{padding:27px 29px 23px}.summary-head{justify-content:space-between;gap:8px;font-size:.9375rem;font-weight:600;color:#51665a}.year-pill{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:20px;font-size:.75rem;font-weight:600;color:#37664d;background:#eef5ed;white-space:nowrap}.year-pill svg{width:14px;height:14px}.balance{font-size:clamp(2.35rem,3.9vw,3.65rem);line-height:1.15;color:#124e37;letter-spacing:-.055em;font-weight:600;font-variant-numeric:tabular-nums;margin:7px 0 20px;overflow-wrap:anywhere}.metrics{display:grid;grid-template-columns:1fr 1fr;gap:14px}.metric{display:flex;gap:12px;align-items:center;border-radius:8px;padding:12px 14px;background:#f1f4f1}.metric.gain{background:#edf5ea}.metric-icon{width:31px;height:31px;display:grid;place-items:center;flex:none;background:#e0e7e0;color:#536b58;border-radius:8px}.gain .metric-icon{background:#d9ead4;color:#37723d}.metric-icon svg{width:17px;height:17px}.metric-label{font-size:.8125rem;color:#4c6152;line-height:1.35}.metric-value{margin-top:3px;font-size:clamp(1rem,1.45vw,1.35rem);font-weight:650;letter-spacing:-.035em;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}.growth{padding:20px 29px 21px;border-top:1px solid #e1e7e0;min-width:0;flex:1;display:flex;flex-direction:column}.chart-head{display:flex;align-items:center;justify-content:space-between;gap:8px}.switcher{padding:3px;border-radius:7px;background:#f0f3ef;gap:2px}.switcher button{display:flex;align-items:center;justify-content:center;gap:5px;padding:6px 9px;border-radius:5px;color:#597060;font-size:.8125rem}.switcher .icon{width:14px;height:14px}.switcher [aria-pressed=true]{background:white;color:#204c36;box-shadow:0 1px 4px #1d3d2023;font-weight:600}.legend{gap:17px;flex-wrap:wrap;margin-top:13px;font-size:.75rem;color:#526658}.legend span{display:inline-flex;align-items:center;gap:6px}.key{width:17px;height:0;border-top:2.5px solid #1b7651}.key.invested{border-top:2px dashed #82998b}.chart-panel{display:flex;flex-direction:column;flex:1;min-height:228px}.chartbox{position:relative;flex:1;min-height:196px;margin-top:10px}.chart-svg{display:block;position:absolute;width:100%;height:100%;overflow:visible}.chart-label{font:12px Inter,Arial,sans-serif;fill:#64756a}.tooltip{position:absolute;background:#173f30;padding:8px 10px;color:white;border-radius:6px;font-size:.75rem;line-height:1.5;pointer-events:none;z-index:1;box-shadow:0 3px 10px #15392120}.tooltip b,.tooltip span{display:block}.table-frame{margin:15px 0 0;max-height:226px;overflow:auto;border:1px solid #e0e7e0;border-radius:7px}.data-table{border-collapse:separate;border-spacing:0;width:100%;text-align:right;font-size:.8125rem;font-variant-numeric:tabular-nums}.data-table th,.data-table td{padding:9px 10px;border-bottom:1px solid #e5ebe5;white-space:nowrap}.data-table th{position:sticky;top:0;font-weight:600;color:#3f5b49;background:#f1f6f0}.data-table tr:last-child td{border-bottom:0}.data-table td:first-child,.data-table th:first-child{text-align:left}.data-table tbody tr:nth-child(even){background:#fafbf9}.data-table td:last-child{font-weight:600;color:#18583b}.footer{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:21px 2px 25px;color:#627168;font-size:.8125rem}.foot-note{gap:8px;line-height:1.55}.foot-note .icon,.download .icon{width:15px;height:15px}.download{font-size:.8125rem;color:#476851;display:inline-flex;align-items:center;gap:6px;flex:none;padding:6px 0}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}.empty{padding:36px 0;color:#586c5f;line-height:1.5;font-size:.9375rem}dialog{color:var(--ink);border:1px solid #cdd9ce;border-radius:14px;box-shadow:0 16px 70px #0b2a2940;padding:27px;max-width:min(480px,calc(100% - 32px));max-height:85vh}dialog::backdrop{background:#112d2490}dialog h2{font-size:1.5rem;letter-spacing:-.04em}dialog h3{margin-top:20px;font-size:1rem}dialog p{font-size:.9375rem;line-height:1.55;color:var(--muted);margin-top:7px}.dialog-head{display:flex;justify-content:space-between;align-items:center}.dialog-head button{height:32px;width:32px;border-radius:6px;display:grid;place-items:center;background:#f0f4ef}
+@media(min-width:1500px){.hero{min-height:180px}.inputs{padding:28px}.fields{gap:24px}.balance-block{padding:29px 33px 25px}.growth{padding:24px 33px}}
+@media(max-width:1000px){.frame{width:calc(100% - 48px)}.workspace{grid-template-columns:minmax(260px,.88fr) minmax(0,1.6fr);gap:16px}.inputs,.balance-block,.growth{padding:20px}.metric{padding:10px;gap:8px}.metric-icon{width:27px;height:27px}.hero-content{padding:26px;width:70%}.title-group{gap:7px}.title-group h2{font-size:1.1rem}}
+@media(max-width:760px){.frame{width:calc(100% - 32px);max-width:600px}.nav{height:62px}.nav-actions{gap:13px}.hero{min-height:160px;margin:18px 0 16px}.hero-content{width:75%;padding:22px}.hero-art{right:-13%;width:50%;opacity:.7}.hero h1{font-size:2.05rem}.hero p{font-size:.9375rem;margin-top:8px}.workspace{grid-template-columns:1fr}.fields{grid-template-columns:1fr 1fr;gap:20px}.card-title{margin-bottom:20px}.field:last-child{grid-column:1/-1}.chartbox{min-height:215px}.footer{align-items:flex-start;flex-wrap:wrap;gap:6px}.balance{font-size:2.8rem}.card-title h2,.chart-head h2{font-size:1.18rem}.inputs,.balance-block,.growth{padding:21px}.metric-value{font-size:1.1rem}}
+@media(max-width:480px){.frame{width:calc(100% - 24px)}.brand{font-size:22px;gap:7px}.brand svg{width:30px;height:30px}.guide{font-size:0;gap:0;padding:8px}.guide .icon{width:20px;height:20px}.nav-actions{gap:7px}.hero-content{width:84%;padding:21px}.hero-art{width:52%;right:-22%;opacity:.45}.hero h1{font-size:1.95rem}.hero p{font-size:.875rem}.fields{gap:17px}.field label,.labelrow label{font-size:.8125rem}.field.range-field .labelrow{align-items:start;flex-direction:column;gap:7px}.field.range-field .inline-input{height:31px}.range{margin-top:14px}.inputs,.balance-block,.growth{padding:18px}.metrics{gap:8px}.metric{padding:11px;gap:0}.metric-icon{display:none}.legend{gap:12px}.chart-head h2{font-size:1.05rem}.switcher button{padding:6px}.balance{font-size:2.55rem}.footer{padding-left:3px}.data-table th,.data-table td{padding:8px 5px;font-size:.75rem}}
+@media(prefers-reduced-motion:no-preference){button,select{transition:color .15s,background-color .15s}}
+</style>
+</head>
+<body>
+<svg class="svg-bank" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+<symbol id="book" viewBox="0 0 24 24"><path d="M12 5.5C9.3 3.9 6.1 3.4 2.5 4.3v14c3.4-.8 6.6-.3 9.5 1.4 2.9-1.7 6.1-2.2 9.5-1.4v-14c-3.6-.9-6.8-.4-9.5 1.2Zm0 0v14"/></symbol>
+<symbol id="world" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></symbol>
+<symbol id="chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+<symbol id="sliders" viewBox="0 0 24 24"><path d="M3 7h6m4 0h8M3 17h11m4 0h3"/><circle cx="11" cy="7" r="2"/><circle cx="16" cy="17" r="2"/></symbol>
+<symbol id="reset-icon" viewBox="0 0 24 24"><path d="M4 10a8 8 0 1 1 1.2 7M4 4v6h6"/></symbol>
+<symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="wallet" viewBox="0 0 24 24"><path d="M4 7V5.5A1.5 1.5 0 0 1 5.5 4H17v3M4 7h15a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7Zm17 4h-4a2 2 0 0 0 0 4h4"/></symbol>
+<symbol id="trend" viewBox="0 0 24 24"><path d="m3 17 6-6 4 3 8-9m-6 0h6v6"/></symbol>
+<symbol id="plot" viewBox="0 0 24 24"><path d="M4 4v16h16M7 14l4-4 3 2 5-6"/></symbol>
+<symbol id="table-icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18m-18 5h18m-11-5v11"/></symbol>
+<symbol id="info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-9v.1"/></symbol>
+<symbol id="download-icon" viewBox="0 0 24 24"><path d="M12 3v12m-4-4 4 4 4-4M4 16v4h16v-4"/></symbol>
+<symbol id="close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+</defs></svg>
+<header class="site-header"><div class="frame nav">
+<div class="brand"><svg aria-hidden="true" viewBox="0 0 40 40"><rect width="40" height="40" rx="11" fill="#156246"/><path d="m7 25 7-8v11H7zm10-6 7-8v17h-7zm10-6 6-7v22h-6z" fill="#e2f8d2"/></svg>Compoundly</div>
+<div class="nav-actions"><button class="guide" id="helpBtn" aria-label="How it works"><svg class="icon" aria-hidden="true"><use href="#book"/></svg>How it works</button><div class="currency"><svg class="icon" aria-hidden="true"><use href="#world"/></svg><select id="currency" aria-label="Display currency"><option>USD</option><option>CAD</option><option>EUR</option><option>GBP</option><option>AUD</option></select><svg class="icon chevron" aria-hidden="true"><use href="#chev"/></svg></div></div>
+</div></header>
+<main class="frame">
+<section class="hero" aria-labelledby="pageTitle"><div class="hero-content"><h1 id="pageTitle">Compound interest calculator</h1><p>See how your investment grows with time, regular contributions, and compound interest.</p></div>
+<svg class="hero-art" viewBox="0 0 500 172" preserveAspectRatio="xMaxYMid slice" aria-hidden="true"><defs>
+<pattern id="graphgrid" width="26" height="26" patternUnits="userSpaceOnUse"><path d="M26 0H0v26" fill="none" stroke="#a6d3ab" stroke-opacity=".15" stroke-width=".8"/></pattern>
+<linearGradient id="gridfade"><stop stop-color="white" stop-opacity="0"/><stop offset=".32" stop-color="white"/></linearGradient><mask id="fade"><rect width="500" height="172" fill="url(#gridfade)"/></mask>
+<linearGradient id="coin-side"><stop stop-color="#235c43"/><stop offset=".54" stop-color="#386b4a"/><stop offset="1" stop-color="#204f3a"/></linearGradient>
+<linearGradient id="coin-top" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#709262"/><stop offset="1" stop-color="#396749"/></linearGradient>
+<g id="coin-slice" stroke="#a1bf89" stroke-width="1.15"><path d="M-36 0c0-7 16-12.5 36-12.5S36-7 36 0v6c0 7-16 12.5-36 12.5S-36 13-36 6Z" fill="url(#coin-side)"/><ellipse rx="36" ry="12.5" fill="url(#coin-top)"/><path d="M-29 8v4m6-2v4m6-2v4m6-3v4m6-3v4m6-4v4m6-4v4m6-5v4m6-6v4m6-6v4m6-7v4" stroke-opacity=".48" stroke-width=".8"/></g>
+<g id="coin-face"><ellipse rx="29.5" ry="9.5" fill="none" stroke="#bdd19e" stroke-width="1"/><path d="m-10 1 7-4 4 2 9-4m-3 0 4-.1-1 2" stroke="#d1dfad" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></g>
+</defs><g mask="url(#fade)"><rect width="500" height="172" fill="url(#graphgrid)"/><path d="M54 145C175 144 279 78 384 12" fill="none" stroke="#aecf9c" stroke-width="1" stroke-dasharray="3 6" opacity=".4"/><g fill="#b7d7aa" opacity=".7"><path d="M137 77h8m-4-4v8m130-56h8m-4-4v8m170 51h8m-4-4v8m-83 70h8m-4-4v8" stroke="currentColor" style="color:#abd0a6" stroke-width=".9"/></g>
+<g transform="translate(350 121)"><use href="#coin-slice"/><use href="#coin-slice" y="-7"/><use href="#coin-slice" y="-14"/><use href="#coin-slice" y="-21"/><use href="#coin-slice" y="-28"/><use href="#coin-slice" y="-35"/><use href="#coin-slice" y="-42"/><use href="#coin-slice" y="-49"/><use href="#coin-slice" y="-56"/><use href="#coin-slice" y="-63"/><use href="#coin-slice" y="-70"/><use href="#coin-face" y="-70"/></g>
+<g transform="translate(281 136)"><use href="#coin-slice"/><use href="#coin-slice" y="-7"/><use href="#coin-slice" y="-14"/><use href="#coin-slice" y="-21"/><use href="#coin-slice" y="-28"/><use href="#coin-slice" y="-35"/><use href="#coin-slice" y="-42"/><use href="#coin-face" y="-42"/></g>
+<g transform="translate(213 149)"><use href="#coin-slice"/><use href="#coin-slice" y="-7"/><use href="#coin-slice" y="-14"/><use href="#coin-face" y="-14"/></g>
+</g></svg></section>
+<div class="workspace">
+<section class="card inputs" aria-labelledby="detailsTitle"><div class="card-title"><div class="title-group"><span class="title-icon"><svg class="icon" aria-hidden="true"><use href="#sliders"/></svg></span><h2 id="detailsTitle">Investment details</h2></div><button type="button" id="reset" class="reset"><svg class="icon" aria-hidden="true"><use href="#reset-icon"/></svg>Reset</button></div>
+<form id="settings" novalidate><div class="fields">
+<div class="field"><label for="principal">Initial investment</label><div class="input-wrap"><span class="unit currency-mark" aria-hidden="true">$</span><input id="principal" value="10,000" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" aria-describedby="validation"></div></div>
+<div class="field"><label for="monthly">Monthly contribution</label><div class="input-wrap"><span class="unit currency-mark" aria-hidden="true">$</span><input id="monthly" value="250" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" aria-describedby="validation"></div></div>
+<div class="field range-field"><div class="labelrow"><label for="rate">Annual interest rate</label><div class="inline-input"><input id="rate" value="6" type="text" inputmode="decimal" autocomplete="off" aria-describedby="validation"><span class="unit">%</span></div></div><input class="range" id="rateRange" type="range" min="0" max="20" step=".01" value="6" aria-label="Annual interest rate in percent"><div class="range-labels" aria-hidden="true"><span>0%</span><span>20%</span></div></div>
+<div class="field range-field"><div class="labelrow"><label for="years">Investment period</label><div class="inline-input"><input id="years" value="20" type="text" inputmode="numeric" autocomplete="off" aria-describedby="validation"><span class="unit">yrs</span></div></div><input class="range" id="yearsRange" type="range" min="1" max="50" step="1" value="20" aria-label="Investment period in years"><div class="range-labels" aria-hidden="true"><span>1 year</span><span>50 years</span></div></div>
+<div class="field"><label for="frequency">Compounding frequency</label><div class="frequency"><select id="frequency"><option value="365">Daily</option><option value="12" selected>Monthly</option><option value="4">Quarterly</option><option value="2">Semiannually</option><option value="1">Annually</option></select><svg class="icon" aria-hidden="true"><use href="#chev"/></svg></div></div></div>
+<p class="validation" id="validation" hidden role="status"></p></form></section>
+<section class="card results" aria-labelledby="balanceTitle"><div class="balance-block"><div class="summary-head"><h2 id="balanceTitle" style="font:inherit">Projected balance</h2><span class="year-pill"><svg class="icon" aria-hidden="true"><use href="#clock"/></svg><span id="afterYears">After 20 years</span></span></div><div class="balance" id="balance">&mdash;</div>
+<div class="metrics"><div class="metric"><span class="metric-icon"><svg class="icon" aria-hidden="true"><use href="#wallet"/></svg></span><div><p class="metric-label">Total invested</p><p class="metric-value" id="invested">&mdash;</p></div></div><div class="metric gain"><span class="metric-icon"><svg class="icon" aria-hidden="true"><use href="#trend"/></svg></span><div><p class="metric-label">Interest earned</p><p class="metric-value" id="interest">&mdash;</p></div></div></div></div>
+<div class="growth"><div class="chart-head"><h2>Balance over time</h2><div class="switcher" role="group" aria-label="Projection view"><button id="chartButton" aria-controls="chartPanel" aria-pressed="true"><svg class="icon" aria-hidden="true"><use href="#plot"/></svg>Chart</button><button id="tableButton" aria-controls="tablePanel" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#table-icon"/></svg>Table</button></div></div>
+<p class="empty" id="empty" hidden>Check your investment details to see the projection.</p>
+<div class="chart-panel" id="chartPanel"><div class="legend"><span><i class="key"></i>Projected balance</span><span><i class="key invested"></i>Total invested</span></div><div id="chartbox" class="chartbox"><svg id="chart" class="chart-svg" role="img" tabindex="0" aria-label="Growth chart by year. Use the left and right arrow keys to explore values."></svg><div id="tip" class="tooltip" hidden></div></div></div>
+<div class="table-frame" id="tablePanel" tabindex="0" role="region" aria-label="Year-by-year projection" hidden><table class="data-table"><thead><tr><th scope="col">Year</th><th scope="col">Invested</th><th scope="col">Interest</th><th scope="col">Balance</th></tr></thead><tbody id="rows"></tbody></table></div></div></section>
+</div>
+<footer class="footer"><p class="foot-note"><svg class="icon" aria-hidden="true"><use href="#info"/></svg>Projections assume a fixed rate and exclude taxes and fees.</p><button class="download" id="download"><svg class="icon" aria-hidden="true"><use href="#download-icon"/></svg>Download calculator</button></footer>
+</main>
+<dialog id="help" aria-labelledby="helpTitle"><div class="dialog-head"><h2 id="helpTitle">How it works</h2><button id="dismiss" aria-label="Close"><svg class="icon" aria-hidden="true"><use href="#close"/></svg></button></div><h3>Interest on interest</h3><p>Your initial investment earns interest, and that interest becomes part of the balance that grows in later periods. Adjust any input to update the projection.</p><h3>Rates and contributions</h3><p>The calculator converts your nominal annual rate and compounding frequency into an equivalent monthly rate. Each month it applies that rate to the opening balance, then adds your contribution at month-end.</p><h3>Reading your results</h3><p>Total invested includes your starting amount and every contribution. Interest earned is the difference between your projected balance and the amount invested. The table shows these cumulative amounts at the end of each year.</p><p>The currency selector changes the unit for all amounts. Calculations use full precision and round only for display.</p></dialog>
+<div id="announcement" role="status" class="sr-only"></div><noscript><p>This calculator needs JavaScript enabled in your browser.</p></noscript>
+<script>
+"use strict";
+
+function project(principal, monthly, annualRate, periods, years) {
+  // An equivalent monthly rate handles deposits between compounding dates.
+  const monthlyRate = Math.expm1(periods / 12 * Math.log1p(annualRate / (100 * periods)));
+  const rows = [{year: 0, invested: principal, interest: 0, balance: principal}];
+  let interest = 0;
+  for (let month = 1; month <= years * 12; month++) {
+    const openingBalance = principal + monthly * (month - 1) + interest;
+    interest += openingBalance * monthlyRate;
+    if (month % 12 === 0) {
+      const invested = principal + monthly * month;
+      rows.push({year: month / 12, invested, interest, balance: invested + interest});
+    }
+  }
+  return rows;
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const originalPage = "<!doctype html>\n" + document.documentElement.outerHTML;
+  const get = id => document.getElementById(id);
+  const controls = ["principal", "monthly", "rate", "years"];
+  const rules = {
+    principal: [0, 1e9, "Enter an initial investment from 0 to 1,000,000,000, with up to two decimal places."],
+    monthly: [0, 1e9, "Enter a monthly contribution from 0 to 1,000,000,000, with up to two decimal places."],
+    rate: [0, 20, "Enter an annual rate from 0% to 20%, with up to two decimal places."],
+    years: [1, 50, "Enter a whole number of years from 1 to 50."]
+  };
+  let series = [];
+  let chartView = true;
+  let layout;
+  let active = null;
+  let announcementTimer;
+  let money, compact;
+  const standardNumber = new Intl.NumberFormat("en-US", {maximumFractionDigits: 2});
+  function setCurrency() {
+    const currency = get("currency").value;
+    money = new Intl.NumberFormat("en-US", {style: "currency", currency, currencyDisplay: "narrowSymbol", minimumFractionDigits: 2, maximumFractionDigits: 2});
+    compact = new Intl.NumberFormat("en-US", {style: "currency", currency, currencyDisplay: "narrowSymbol", notation: "compact", maximumFractionDigits: 1});
+    const symbol = money.formatToParts(0).find(part => part.type === "currency").value;
+    document.querySelectorAll(".currency-mark").forEach(node => node.textContent = symbol);
+  }
+  function readNumber(id) {
+    const raw = get(id).value.trim();
+    if (!/^(?:(?:\d+|\d{1,3}(?:,\d{3})+)(?:\.\d{0,2})?|\.\d{1,2})$/.test(raw)) return NaN;
+    const value = Number(raw.replaceAll(",", ""));
+    const [min, max] = rules[id];
+    return value >= min && value <= max && (id !== "years" || Number.isInteger(value)) ? value : NaN;
+  }
+  function syncSlider(id, value) {
+    const slider = get(id + "Range");
+    if (Number.isFinite(value)) slider.value = value;
+    const percent = 100 * (Number(slider.value) - slider.min) / (slider.max - slider.min);
+    slider.style.setProperty("--pct", percent + "%");
+  }
+  function calculate() {
+    const values = {};
+    let error = "";
+    for (const id of controls) {
+      values[id] = readNumber(id);
+      const invalid = !Number.isFinite(values[id]);
+      get(id).setAttribute("aria-invalid", String(invalid));
+      if (invalid && !error) error = rules[id][2];
+    }
+    syncSlider("rate", values.rate);
+    syncSlider("years", values.years);
+    get("validation").textContent = error;
+    get("validation").hidden = !error;
+    series = error ? [] : project(values.principal, values.monthly, values.rate, Number(get("frequency").value), values.years);
+    const last = series[series.length - 1];
+    get("afterYears").textContent = Number.isFinite(values.years) ? "After " + values.years + (values.years === 1 ? " year" : " years") : "Period unavailable";
+    for (const id of ["balance", "invested", "interest"]) get(id).textContent = last ? money.format(last[id]) : "—";
+    get("rows").innerHTML = series.map(row => "<tr><th scope='row' style='position:static;background:transparent'>" + row.year + "</th>" + [row.invested, row.interest, row.balance].map(val => "<td>" + money.format(val) + "</td>").join("") + "</tr>").join("");
+    hidePoint();
+    refreshView();
+    clearTimeout(announcementTimer);
+    announcementTimer = setTimeout(() => {
+      get("announcement").textContent = last ? "Projected balance " + money.format(last.balance) + " after " + last.year + (last.year === 1 ? " year." : " years.") : "";
+    }, 350);
+  }
+  function refreshView() {
+    get("chartButton").setAttribute("aria-pressed", String(chartView));
+    get("tableButton").setAttribute("aria-pressed", String(!chartView));
+    get("chartPanel").hidden = !chartView || !series.length;
+    get("tablePanel").hidden = chartView || !series.length;
+    get("empty").hidden = !!series.length;
+    if (chartView && series.length) drawChart();
+  }
+  function drawChart() {
+    if (!chartView || !series.length) return;
+    const box = get("chartbox");
+    const w = box.clientWidth, h = box.clientHeight;
+    if (w < 20 || h < 20) return;
+    const last = series[series.length - 1];
+    const target = (last.balance || 100) / 4;
+    const order = 10 ** Math.floor(Math.log10(target));
+    const step = [1, 1.25, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10].find(n => n * order >= target) * order;
+    const ticks = Math.max(1, Math.ceil((last.balance || 100) / step));
+    const top = 12, bottom = h - 26, right = w - 12;
+    const labels = Array.from({length: ticks + 1}, (_, i) => compact.format(step * i));
+    const left = Math.max(40, 8 + Math.max(...labels.map(s => s.length)) * 7.5);
+    const x = year => left + (right - left) * year / last.year;
+    const y = amount => bottom - (bottom - top) * amount / (step * ticks);
+    const points = key => series.map((row, i) => (i ? "L" : "M") + x(row.year) + "," + y(row[key])).join(" ");
+    const balanceLine = points("balance"), investedLine = points("invested");
+    const parts = ['<defs><linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#72b78f" stop-opacity=".48"/><stop offset="1" stop-color="#d7e8d8" stop-opacity=".25"/></linearGradient></defs>'];
+    labels.forEach((label, i) => {
+      const ty = y(step * i);
+      parts.push('<line x1="' + left + '" x2="' + right + '" y1="' + ty + '" y2="' + ty + '" stroke="#dae2da" stroke-dasharray="3 4"/>',
+        '<text class="chart-label" x="' + (left - 8) + '" y="' + (ty + 4) + '" text-anchor="end">' + label + '</text>');
+    });
+    const count = Math.min(last.year, w < 390 ? 3 : 4);
+    for (let i = 0; i <= count; i++) {
+      const year = Math.round(last.year * i / count);
+      const anchor = i === count ? "end" : i === 0 ? "start" : "middle";
+      parts.push('<text class="chart-label" x="' + x(year) + '" y="' + (h - 4) + '" text-anchor="' + anchor + '">Year ' + year + '</text>');
+    }
+    parts.push('<path d="' + balanceLine + ' L' + right + ',' + bottom + ' H' + left + 'Z" fill="url(#areaFill)"/>',
+      '<path d="' + investedLine + '" fill="none" stroke="#819a88" stroke-width="2" stroke-dasharray="5 5"/>',
+      '<path d="' + balanceLine + '" fill="none" stroke="#187451" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>',
+      '<circle cx="' + right + '" cy="' + y(last.balance) + '" r="4.5" fill="#19714f" stroke="white" stroke-width="2"/>',
+      '<g id="marker" visibility="hidden"><line id="crosshair" y1="' + top + '" y2="' + bottom + '" stroke="#569a70" stroke-dasharray="3 3"/><circle id="hoverDot" r="4.5" fill="#196d4d" stroke="white" stroke-width="2"/></g>');
+    const chart = get("chart");
+    chart.setAttribute("viewBox", "0 0 " + w + " " + h);
+    chart.innerHTML = parts.join("");
+    layout = {left, right, x, y, w, h};
+    if (active !== null) showPoint(active);
+  }
+  function showPoint(index) {
+    if (!series.length || !layout || !get("marker")) return;
+    active = Math.max(0, Math.min(series.length - 1, index));
+    const row = series[active];
+    const px = layout.x(row.year), py = layout.y(row.balance);
+    const line = get("crosshair"), dot = get("hoverDot"), tip = get("tip");
+    line.setAttribute("x1", px);
+    line.setAttribute("x2", px);
+    dot.setAttribute("cx", px);
+    dot.setAttribute("cy", py);
+    get("marker").setAttribute("visibility", "visible");
+    tip.innerHTML = "<b>Year " + row.year + "</b><span>Balance " + money.format(row.balance) + "</span><span>Invested " + money.format(row.invested) + "</span>";
+    tip.hidden = false;
+    tip.style.left = Math.max(0, Math.min(layout.w - tip.offsetWidth, px > layout.w * .6 ? px - tip.offsetWidth - 10 : px + 10)) + "px";
+    tip.style.top = Math.max(0, Math.min(layout.h - tip.offsetHeight, py - 24)) + "px";
+  }
+  function hidePoint() {
+    active = null;
+    get("tip").hidden = true;
+    get("marker")?.setAttribute("visibility", "hidden");
+  }
+  const chart = get("chart");
+  chart.addEventListener("pointermove", e => {
+    if (!layout || !series.length) return;
+    const px = e.clientX - chart.getBoundingClientRect().left;
+    showPoint(Math.round((px - layout.left) / (layout.right - layout.left) * (series.length - 1)));
+  });
+  chart.addEventListener("pointerleave", hidePoint);
+  chart.addEventListener("focus", () => showPoint(0));
+  chart.addEventListener("blur", hidePoint);
+  chart.addEventListener("keydown", e => {
+    if (e.key === "Escape") return hidePoint();
+    if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(e.key)) return;
+    e.preventDefault();
+    const target = e.key === "Home" ? 0 : e.key === "End" ? series.length - 1 : (active ?? 0) + (e.key === "ArrowRight" ? 1 : -1);
+    showPoint(target);
+    get("announcement").textContent = get("tip").innerText;
+  });
+
+  get("settings").addEventListener("submit", e => e.preventDefault());
+  controls.forEach(id => get(id).addEventListener("input", calculate));
+  ["principal", "monthly"].forEach(id => get(id).addEventListener("blur", () => {
+    const value = readNumber(id);
+    if (Number.isFinite(value)) get(id).value = standardNumber.format(value);
+  }));
+  ["rate", "years"].forEach(id => get(id + "Range").addEventListener("input", () => {
+    get(id).value = get(id + "Range").value;
+    calculate();
+  }));
+  get("frequency").addEventListener("change", calculate);
+  get("currency").addEventListener("change", () => { setCurrency(); calculate(); });
+  get("reset").addEventListener("click", () => { get("settings").reset(); calculate(); });
+  get("chartButton").addEventListener("click", () => { chartView = true; refreshView(); });
+  get("tableButton").addEventListener("click", () => { chartView = false; hidePoint(); refreshView(); });
+  get("helpBtn").addEventListener("click", () => get("help").showModal());
+  get("dismiss").addEventListener("click", () => get("help").close());
+  get("help").addEventListener("click", e => {
+    const rect = get("help").getBoundingClientRect();
+    if (e.target === get("help") && (e.clientX < rect.left || e.clientX > rect.right || e.clientY < rect.top || e.clientY > rect.bottom)) get("help").close();
+  });
+  get("download").addEventListener("click", () => {
+    const url = URL.createObjectURL(new Blob([originalPage], {type: "text/html;charset=utf-8"}));
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "compound-interest-calculator.html";
+    document.body.append(link);
+    link.click();
+    link.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 30000);
+  });
+  setCurrency();
+  calculate();
+  new ResizeObserver(drawChart).observe(get("chartbox"));
+});
+</script>
+</body>
+</html>
